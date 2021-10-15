@@ -29,9 +29,30 @@ function App() {
 
   return (
     <div>
+      <h1>Todo Coinbase</h1>
       <p>Contagem: {countItemsWithOne}</p>
-      <input onChange={(e) => setText(e.target.value)} value={text} />
-      <button onClick={() => addItemToList()}>Add</button>
+      <form onSubmit={(e) => {
+        e.preventDefault()
+        addItemToList()
+        }}>
+        <label for="new-todo-text">Add a new task</label>
+        <div>
+          <input
+            type="text"
+            onChange={(e) => setText(e.target.value)}
+            value={text}
+            aria-describedby="example"
+            search
+            required
+          />
+          <button type="submit">
+            Add
+          </button>
+        </div>
+        <div class="example">
+          Example: Feed the bird
+        </div>
+      </form>
       <ul>
         {items.map((item) => {
           return (
@@ -43,6 +64,11 @@ function App() {
           );
         })}
       </ul>
+      <div role="status" aria-live="polite" id="sc_feedback" class="sc_feedback">
+           {
+           // Area to be pronounceable by screen readers
+           }
+        </div>
     </div>
   );
 }
