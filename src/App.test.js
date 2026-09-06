@@ -9,11 +9,12 @@ test('renders the todo heading', () => {
   ).toBeInTheDocument();
 });
 
-test('adds a task to the list when the form is submitted', () => {
+test('adds a task to the list when the form is submitted', async () => {
+  const user = userEvent.setup();
   render(<App />);
 
-  userEvent.type(screen.getByRole('textbox'), 'Feed the bird');
-  userEvent.click(screen.getByRole('button', { name: /add$/i }));
+  await user.type(screen.getByRole('textbox'), 'Feed the bird');
+  await user.click(screen.getByRole('button', { name: /add$/i }));
 
   expect(screen.getByText('Item 0')).toBeInTheDocument();
 });
