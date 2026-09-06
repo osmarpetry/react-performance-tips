@@ -5,7 +5,7 @@ import Item from './Item';
 function App() {
   const [items, setItems] = useState([]);
   const [text, setText] = useState('');
-  const [wishlist, setWishlist] = useState([]);
+  const [, setWishlist] = useState([]);
 
   function addItemToList() {
     setItems((prevState) => [...prevState, `Item ${items.length}`]);
@@ -18,7 +18,7 @@ function App() {
       );
       setWishlist((prevState) => [...prevState, item]);
     },
-    [wishlist]
+    []
   );
 
   const countItemsWithOne = useMemo(() => {
